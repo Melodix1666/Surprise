@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surprise!</title>
+    <style>
+        /* Apply styles to center everything */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background-color: #f0f0f0;
+        }
+
+        /* Ensure the headings and paragraphs are centered */
+        h1, h2, h3, h4, p {
+            text-align: center;
+            margin: 10px;
+        }
+
+        /* Center the content ( visit link and the press me button)*/
+        .center-content {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            margin: 10px
+        }
+
+        
+    </style>
+</head>
+</head>
+<head> 
+ <link rel="stylesheet" href="Background image.css"
+head>
+ 
+    <body>
+<main>
+    
+    </div>
+<h1>Haii</h1>
+<section>
+    <h2> Welcome</h2>
+   <p>I'm glad you came have this <a href="https://www.icegif.com/wp-content/uploads/2023/10/icegif-27.gif">special</a> welcome </p>
+</section>
+<section>
+    <p>  yk you really shouldnt open up links people sent to you, its very dangerous!</p>
+    <h3> but since you have openend this, i want you to be my test subject to make sure everything works!</h3>
+    <h3>Press the visit button</h3>
+    <a href="https://us.darryring.com" class="button">Visit</a>
+    <h3> did it redirect you?</h3>
+    <p>hopefully it did. Now were gonna test something new out, havent you always wanted to know the time, date and year it is just by pressing on button?</p>
+
+    <button type="button" 
+    onclick="document.getElementById('demo').innerHTML = Date()">
+        Click me!&#128513;</button>
+        <p id="demo"></p>
+
+<h4> Now were going to try out a couple more stuff, I'm not gonna say what stuff just pick a number between 1 and 3 and press it</h4>
+
+
+<a href="Quiz.html">
+    <div class="quiz-link">1</div>
+</a>
+
+<div><a href="spin the wheel.html">2</a></div>
+
+<div><a href="Press the button.html">3</a></div>
+
+</section>
+</main>
+</div>
+</body>
+</html>
