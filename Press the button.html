@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>100 Button Clicks</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      padding: 50px;
+      background-color: #fff0f5;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      font-size: 2rem;
+      color: #e91e63;
+    }
+
+    #loveBtn {
+      padding: 20px 40px;
+      font-size: 1.5rem;
+      background-color: #ff4081;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    #loveBtn:hover {
+      background-color: #f50057;
+    }
+
+    #counter {
+      font-size: 1.5rem;
+      margin-top: 20px;
+      color: #333;
+    }
+
+    #message {
+      font-size: 1.8rem;
+      margin-top: 30px;
+      color: #e91e63;
+      font-weight: bold;
+    }
+
+    .love-letter {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      background: #fff;
+      padding: 30px;
+      border-radius: 30px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+      z-index: 999;
+      text-align: center;
+      transition: transform 0.5s ease, opacity 0.5s ease;
+      max-width: 400px;
+      font-size: 1.2rem;
+      opacity: 0;
+    }
+
+    .love-letter.show {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+    }
+
+    .love-letter h2 {
+      color: #e91e63;
+      margin-bottom: 15px;
+    }
+
+    .heart {
+      position: fixed;
+      color: #ff69b4;
+      font-size: 24px;
+      animation: float 4s linear infinite;
+      z-index: 1;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100vh) scale(1.5);
+        opacity: 0;
+      }
+    }
+
+    .heart:nth-child(odd) {
+      animation-duration: 4s;
+      animation-delay: 0.5s;
+    }
+
+    .heart:nth-child(even) {
+      animation-duration: 5s;
+      animation-delay: 1s;
+    }
+
+    .confetti {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      z-index: 100;
+      pointer-events: none;
+      animation: confettiFall 4s ease-in-out forwards;
+    }
+
+    @keyframes confettiFall {
+      0% { transform: translateY(-100vh); opacity: 1; }
+      100% { transform: translateY(100vh); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Press the Button a 100 times to show how much you love me! ❤️</h1>
+
+  <button id="loveBtn">&#128151; Press Me!</button>
+  <div id="counter">Pressed: 0 / 100</div>
+  <div id="message"></div>
+
+  <!-- Hidden Love Letter Popup -->
+  <div class="love-letter" id="loveLetter">
+    <h2> 💌 Read me! 💌 </h2>
+    <p>
+      Thank you for showing me how much you love me. I made this to say that I really, really love you and I appreciate all that you do for me.
+      I'm sorry if I've been on edge a lot and  doubting a lot of stuff but i trust you and what happens happens, I trust you&#128578;.
+      You mean so much to me and I'm so glad we're together. I hope we stay with each other for a very long time.
+      I don't know what I would do without you because I love you so so so much ❤️
+      I hope you liked this because it took me 4-5 days to make (crazy, right?), but it was so worth it. I'd do it again in a heartbeat.
+      You mean the world to me. I love you to the moon and back 💞
+    </p>
+  </div>
+
+  <!-- Sounds -->
+  <audio id="loveSong" src="audio/2025-03-14 03-51-26.mp3" preload="auto"></audio>
+
+  <script>
+    let count = 0;
+
+    const button = document.getElementById("loveBtn");
+    const counter = document.getElementById("counter");
+    const message = document.getElementById("message");
+    const loveLetter = document.getElementById("loveLetter");
+    const loveSong = document.getElementById("loveSong");
+
+    button.addEventListener("click", () => {
+      if (count < 100) {
+        count++;
+        counter.textContent = `Pressed: ${count} / 100`;
+
+        if (count % 10 === 0) {
+          createFloatingHeart();
+        }
+      }
+
+      if (count === 100) {
+        message.innerHTML = "WOW! You love me sooooooo much! 🥰";
+        button.disabled = true;
+        button.style.opacity = 0.5;
+
+        // Show love letter popup
+        setTimeout(() => {
+          loveLetter.classList.add("show");
+        }, 500);
+
+        // Play love song
+        loveSong.play();
+
+        // Extra floating hearts
+        for (let i = 0; i < 20; i++) {
+          setTimeout(createFloatingHeart, i * 200);
+        }
+      }
+    });
+
+    function createFloatingHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.innerHTML = "💗";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = Math.random() * 20 + 20 + "px";
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 4000);
+    }
+  </script>
+</body>
+</html>
